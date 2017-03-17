@@ -1,0 +1,25 @@
+.post-form textarea, .post-form input, .post-form select {
+	/*width: 100%;*/
+	margin-left: 10px;
+	margin-right: 20px; 
+}
+
+.post-form .tx_big{
+	width: 100%;
+}
+
+.post-form table {
+	width: 80%;	
+	border-collapse: separate;
+}
+
+.post-form td {
+	padding-bottom: 4px;
+	padding-top: 4px;
+	padding-left: 2px;
+	padding-right: 0px;
+}
+
+.post-form .lb {
+	text-align: right;
+}
