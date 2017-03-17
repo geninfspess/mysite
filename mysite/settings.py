@@ -25,7 +25,7 @@ SECRET_KEY = '0p8wn3b6av2qmgi6pl@ts8lbau#(w9h*y_*kx+r+vb0hzj9f-w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['geninfspess.pythonanywhere.com',]
 
 
 # Application definition
