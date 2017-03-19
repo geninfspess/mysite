@@ -25,7 +25,7 @@ SECRET_KEY = '0p8wn3b6av2qmgi6pl@ts8lbau#(w9h*y_*kx+r+vb0hzj9f-w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['geninfspess.pythonanywhere.com',]
+ALLOWED_HOSTS = ['geninfspess.pythonanywhere.com']
 
 
 # Application definition
@@ -128,3 +128,12 @@ DATE_INPUT_FORMATS = (
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#Email configuration: Gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Eugênio <eugeniofspe@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'eugeniofspe@gmail.com'
+EMAIL_HOST_PASSWORD = 'rfvgy1486'
+EMAIL_PORT = 587

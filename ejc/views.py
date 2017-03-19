@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib import messages
+from django.core.mail import send_mail
 
 #from django.core.validators import validate_email
 
@@ -11,11 +12,17 @@ def index(request):
 	error = ''
 
 	if request.method == "POST":
+
+		if request.POST.get("emensagem"):
+			mensagem = 'From: ' + request.POST['eemail'] + '\n\n' + request.POST['emensagem'];
+			send_mail(request.POST['eassunto'], mensagem, request.POST['eemail'], ['ejcpnsgloria@gmail.com'], fail_silently=False)
+			messages.success(request, 'E-mail enviado com sucesso.')
+
 		form = IscricaoForm(request.POST)
 		if form.is_valid():
 			try:
 				# verificar telefones
-				if len(request.POST.get("telefone") + request.POST.get("telefone")) < 14:
+				if len(request.POST.get("telefone") + request.POST.get("celular")) < 14:
 					error = 'Insira um telefone fixo ou celular valido.'
 					1/0
 
