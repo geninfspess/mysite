@@ -31,8 +31,8 @@ ALLOWED_HOSTS = ['geninfspess.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
-    'blog',
+    # 'polls.apps.PollsConfig',
+    # 'blog',
     'ejc',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -131,7 +131,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #Email configuration: Gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Eugênio <eugeniofspe@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Eugenio <eugeniofspe@gmail.com>'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'eugeniofspe@gmail.com'
