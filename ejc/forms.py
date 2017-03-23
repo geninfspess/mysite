@@ -1,7 +1,7 @@
 from django import forms
 from .models import Inscricao, Comunidade
 
-class IscricaoForm(forms.ModelForm):
+class InscricaoForm(forms.ModelForm):
 
     class Meta:
         model = Inscricao

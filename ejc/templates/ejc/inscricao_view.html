@@ -5,9 +5,9 @@
 <title>EJC N. Sra. da Glória</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/ejc.css' %}">
 
 <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
@@ -328,7 +328,7 @@ body, html {
         </table>
       </div>
       <div class="w3-col m7">
-        <table>
+        <table class="w3-table">
           <tr>
             <td class="lb">Nome:</td>
             <td colspan="3">{{ form.nome }}</td>
@@ -360,22 +360,6 @@ body, html {
       </div>
       <button type="submit" class="w3-button w3-black w3-padding-large">Salvar</button>
     </form>
-    <!-- <div class="w3-third">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-red w3-xlarge w3-padding-48">Pro</li>
-        <li class="w3-padding-16"><b>25GB</b> Storage</li>
-        <li class="w3-padding-16"><b>25</b> Emails</li>
-        <li class="w3-padding-16"><b>25</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">$ 25</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
-        </li>
-      </ul>
-    </div> -->
   </div>
 </div>
 

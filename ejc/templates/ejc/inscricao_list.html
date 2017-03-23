@@ -1,0 +1,38 @@
+{% extends 'ejc/base.html' %}
+
+{% block content %}
+{% if all_list %}
+	<table class="w3-table-all w3-hoverable w3-small">
+		<thead>
+	      <tr class="w3-light-grey">
+	        <th>Data Cadastro</th>
+	        <th>Nome</th>
+	        <th>Nascimento</th>
+	        <th>Endereço</th>
+	        <th>Telefone</th>
+	        <th>Celular</th>
+	        <th>Comunidade</th>
+	        <th>Padrinho</th>
+	        <th>Tel Padrinho</th>
+	        <th></th>
+	      </tr>
+	    </thead>
+		{% for obj in all_list %}
+			<tr>
+				<td>{{ obj.data_cadastro|date:"d/m/Y H:i:s" }}</td>
+				<td>{{ obj.nome }}</td>
+				<td>{{ obj.data_nascimento }}</td>
+				<td>{{ obj.endereco }}</td>
+				<td>{{ obj.telefone }}</td>
+				<td>{{ obj.celular }}</td>
+				<td>{{ obj.comunidade }}</td>
+				<td>{{ obj.nome_padrinho }}</td>
+				<td>{{ obj.telefone_padrinho }}</td>
+				<td><a href="/ejc/inscricao/{{ obj.pk }}"><i class="fa fa-pencil"></i></a></td>
+			</tr>
+		{% endfor %}
+	</table>
+{% else %}
+	<p>Nenhuma inscrição cadastrada.</p>
+{% endif %}
+{% endblock content %}

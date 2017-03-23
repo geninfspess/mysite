@@ -1,0 +1,22 @@
+{% extends 'ejc/base.html' %}
+
+{% block content %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <table class="tbForm">
+        {{ form.as_table }}
+    	</table>
+    	<div align="center" style="margin-top:32px;">
+    		<button type="submit" class="w3-button w3-black w3-padding-large">Salvar</button>
+    	</div>
+    </form>
+
+    <script type="text/javascript">
+    	$(function() {
+		  // mascaras dos campos de texto
+		  $('#id_data_nascimento').mask('00/00/0000', {placeholder: "__/__/____"});
+		  $('#id_telefone').mask('(00) 0000-0000', {placeholder: "(__) ____-____"});
+		  $('#id_celular').mask('(00) 00000-0000', {placeholder: "(__) _____-____"});
+		  $('#id_telefone_padrinho').mask('(00) 00000-0000', {placeholder: "(__) _____-____"});
+		});
+    </script>
+{% endblock %}

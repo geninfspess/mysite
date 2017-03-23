@@ -1,0 +1,68 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<title>EJC N. Sra. da Glória</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+
+<style type="text/css">
+    body {
+    background: #eee !important;
+    }
+    .wrapper {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+    .form-signin {
+      max-width: 380px;
+      padding: 15px 35px 45px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .form-signin .form-control {
+      position: relative;
+      font-size: 14px;
+      height: auto;
+      padding: 5px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+    }
+</style>
+
+<body>
+    <div class="wrapper">    
+        <form method="post" action="{% url 'login' %}" class="form-signin">
+        {% csrf_token %}
+            <h2 class="form-signin-heading">Please login</h2>
+            <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+            <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+            <div class="checkbox">
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+            </div>
+
+            <div align="center">
+            <button class="w3-button w3-black w3-padding-large" type="submit" value="login">Login</button> 
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    <div class="wrapper">
+    <div align="center">
+        {% if form.errors %}
+        <p>Seu login e password não conferem. Por favor, tente novamente.</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

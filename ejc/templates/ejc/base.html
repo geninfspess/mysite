@@ -1,0 +1,94 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<title>EJC N. Sra. da Glória</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/ejc.css' %}">
+
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+/* Full height image header */
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("{% static 'images/imhome.jpg' %}");
+    min-height: 100%;
+}
+.w3-bar .w3-button {
+    padding: 16px;
+}
+</style>
+
+<script type="text/javascript">
+$(function() {
+  {% if messages %}
+    {% for message in messages %}
+      alert('{{ message }}');
+    {% endfor %}
+  {% endif %}  
+});
+</script>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card-2" id="myNavbar">
+    <!-- Left-sided navbar links -->
+    <div class="w3-left w3-hide-small">
+        <img src="{% static 'images/logopura.jpg' %}" width="50" height="59">
+    </div>
+    <div class="w3-left w3-hide-small">
+      <label class="w3-bar-item w3-button">Encontro de Jovens com Cristo: Paróquia N. Sra. da Glória</label>
+    </div>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#" class="w3-bar-item w3-button"> Olá {{ request.user.username }}.</a>
+      <a href="{% url 'logout' %}" class="w3-bar-item w3-button"><i class="fa fa-arrow-up"></i> SAIR</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars w3-padding-right w3-padding-left"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidenav on small screens when clicking the menu icon -->
+<nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidenav">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">Fechar ×</a>
+  <a href="#sobre" onclick="w3_close()">SOBRE</a>
+  <!-- <a href="#team" onclick="w3_close()">TEAM</a> -->
+  <a href="#requisitos" onclick="w3_close()">REQUISITOS</a>
+  <a href="#inscricao" onclick="w3_close()">PRÉ-INSCRIÇÃO</a>
+  <a href="#contato" onclick="w3_close()">CONTATO</a>
+</nav>
+
+<div class="w3-container w3-padding-128">
+  <h3 class="w3-center">Inscrições</h3>
+  <!-- <p class="w3-center w3-large">Encontro de Jovens com Cristo</p> -->
+  <div class="w3-row-padding" style="margin-top:32px">
+    <div class="w3">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- <div class="w3-quarter">
+      <i class="fa fa-home w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Início</p>
+      <p>Surgiu em 1970 em São Paulo sob influência do padre Afonso Pastore para atender as demandas da Pastoral Familiar Paroquial.</p>
+    </div> -->
+  </div>
+</div>
+</body>
+</html>
