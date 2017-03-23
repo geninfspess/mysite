@@ -35,7 +35,7 @@ def index(request):
 				inscricao.data_cadastro = timezone.now()
 				inscricao.save()
 				messages.success(request, 'Pre inscricao realizada com sucesso.')
-				form = IscricaoForm()
+				form = InscricaoForm()
 			except Exception as e:
 				if error != '':
 					messages.success(request, error)
@@ -48,7 +48,7 @@ def index(request):
 
 @login_required
 def InscricaoList(request):
-	all_list = Inscricao.objects.order_by('-data_cadastro')
+	all_list = Inscricao.objects.order_by('data_cadastro')
 	return render(request, 'ejc/inscricao_list.html', {'all_list': all_list})
 
 @login_required
