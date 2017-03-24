@@ -5,6 +5,7 @@
 	<table class="w3-table-all w3-hoverable w3-small">
 		<thead>
 	      <tr class="w3-light-grey">
+	      	<th></th>
 	        <th>Data Cadastro</th>
 	        <th>Nome</th>
 	        <th>Nascimento</th>
@@ -19,6 +20,7 @@
 	    </thead>
 		{% for obj in all_list %}
 			<tr>
+				<td>{{ forloop.counter }}</td>
 				<td>{{ obj.data_cadastro|date:"d/m/Y H:i:s" }}</td>
 				<td>{{ obj.nome }}</td>
 				<td>{{ obj.data_nascimento }}</td>
