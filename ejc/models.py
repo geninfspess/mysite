@@ -63,4 +63,4 @@ class Coordenador(models.Model):
 	usuario = models.ForeignKey('auth.User')
 
 	def __str__(self):
-		return self.servo.nome
+		return self.usuario.username
