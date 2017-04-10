@@ -1,0 +1,35 @@
+{% extends 'ejc/base.html' %}
+
+{% block content %}
+    <h3 class="w3-center" style="padding-bottom:18px;">{{ title }}</h3>
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        <table class="tbForm">
+        {{ form.as_table }}
+    	</table> 
+        <input type="hidden" name="hdExcluir" id="hdExcluir" value="false"> 
+    	<div align="center" style="margin-top:32px;">
+    		<button type="submit" class="w3-button w3-black w3-padding-large">Salvar</button>
+            <button type="button" id="btExcluir" class="w3-button w3-black w3-padding-large">Excluir</button>
+            <a type="button" href="/ejc/equipe/" class="w3-button w3-black w3-padding-large">Voltar</a>
+    	</div>
+    </form>
+
+    <script type="text/javascript">
+    	$(function() {
+		  // mascaras dos campos de texto
+		  $('#id_data_nascimento').mask('00/00/0000', {placeholder: "__/__/____"});
+		  $('#id_telefone').mask('(00) 0000-0000', {placeholder: "(__) ____-____"});
+		  $('#id_celular').mask('(00) 00000-0000', {placeholder: "(__) _____-____"});
+          $('#id_celular2').mask('(00) 00000-0000', {placeholder: "(__) _____-____"});
+
+          $("#btExcluir").click(function() {
+            var confirm = window.confirm('ATENÇÃO: Deseja excluir este Servo?');
+            if(confirm){
+                $('#hdExcluir').val("true");
+                $('form').submit();
+            }
+          });
+		});
+    </script>
+{% endblock %}
