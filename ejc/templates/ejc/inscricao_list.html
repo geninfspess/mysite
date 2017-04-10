@@ -2,6 +2,8 @@
 
 {% block content %}
 {% if all_list %}
+	<h3 class="w3-center" style="padding-bottom:18px;">Inscrições</h3>
+
 	<table class="w3-table-all w3-hoverable w3-small">
 		<thead>
 	      <tr class="w3-light-grey">
@@ -27,7 +29,7 @@
 				<td>{{ obj.endereco }}</td>
 				<td>{{ obj.telefone }}</td>
 				<td>{{ obj.celular }}</td>
-				<td>{{ obj.comunidade }}</td>
+				<td>{% if obj.comunidade %}{{ obj.comunidade }}{% else %}{{ obj.ds_comunidade }}{% endif %}</td>
 				<td>{{ obj.nome_padrinho }}</td>
 				<td>{{ obj.telefone_padrinho }}</td>
 				<td><a href="/ejc/inscricao/{{ obj.pk }}"><i class="fa fa-pencil"></i></a></td>

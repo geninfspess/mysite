@@ -1,5 +1,5 @@
 from django import forms
-from .models import Inscricao, Comunidade
+from .models import Inscricao, Comunidade, Servo
 
 class InscricaoForm(forms.ModelForm):
 
@@ -14,4 +14,17 @@ class InscricaoForm(forms.ModelForm):
             'email': forms.DateInput(attrs={'class':'tx_big'}),
             'ds_comunidade': forms.DateInput(attrs={'class':'tx_big'}),
             'nome_padrinho': forms.DateInput(attrs={'class':'tx_big'}),
+        }
+
+class ServoForm(forms.ModelForm):
+
+    class Meta:
+        model = Servo
+        fields = ('nome', 'data_nascimento', 'email', 'email2', 'telefone', 'celular', 'celular2', 'comunidade', 'outra_comunidade', 'coordenador')
+        widgets = {
+            'data_nascimento': forms.DateInput(attrs={'class':'datepicker'}),
+            'nome': forms.DateInput(attrs={'class':'tx_big'}),
+            'email': forms.DateInput(attrs={'class':'tx_big'}),
+            'email2': forms.DateInput(attrs={'class':'tx_big'}),
+            'outra_comunidade': forms.DateInput(attrs={'class':'tx_big'}),
         }

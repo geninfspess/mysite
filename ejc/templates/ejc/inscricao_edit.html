@@ -1,6 +1,8 @@
 {% extends 'ejc/base.html' %}
 
 {% block content %}
+    <h3 class="w3-center" style="padding-bottom:18px;">Alterar Inscrição</h3>
+
     <form method="POST" class="post-form">{% csrf_token %}
         <table class="tbForm">
         {{ form.as_table }}
