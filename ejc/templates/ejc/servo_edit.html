@@ -2,6 +2,10 @@
 
 {% block content %}
     <h3 class="w3-center" style="padding-bottom:18px;">{{ title }}</h3>
+    <h4 class="w3-center" style="color:red; font-size:15px;">
+        * para adicionar um casal de tios, insira apenas o primeiro nome de cada tio. Ex.: Eugênio e Kayze.
+        <BR>* o campo Email2 e Celular2 deve ser preenchido apenas para tios.
+    </h4>
 
     <form method="POST" class="post-form">{% csrf_token %}
         <table class="tbForm">
