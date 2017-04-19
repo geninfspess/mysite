@@ -136,3 +136,63 @@ def ServoNew(request):
 		form = ServoForm()
 	
 	return render(request, 'ejc/servo_edit.html', {'form': form, 'title': 'Adicionar Servo'})
+
+@login_required
+@permission_required('ejc.secretaria')
+def EquipesList(request):
+	id_user = request.user.id
+	coord = Coordenador.objects.filter(usuario=id_user)
+	equipe_list = Equipe.objects.all().order_by('nome')
+
+	if request.method == "POST":
+		equipe = request.POST.get("selEquipe")
+		coord_list = Servo.objects.filter(equipe=equipe, coordenador=True).order_by('nome')
+		servo_list = Servo.objects.filter(equipe=equipe, coordenador=False).order_by('nome')
+	else:
+		coord_list = []
+		servo_list = []
+		equipe = 0
+
+	return render(request, 'ejc/equipes_list.html', {'coord_list': coord_list, 'servo_list': servo_list, 'equipe_list': equipe_list, 'equipe': equipe})
+
+@login_required
+@permission_required('ejc.secretaria')
+def EquipesEdit(request, pk):
+    servo = get_object_or_404(Servo, pk=pk)
+
+    if request.method == "POST":
+        form = ServoForm(request.POST, instance=servo)
+        if form.is_valid():
+            servo = form.save(commit=False)
+
+            if request.POST.get("hdExcluir") == 'true':
+            	servo.delete()
+            else:
+            	servo.usuario_alteracao = request.user
+            	servo.data_alteracao = timezone.now()
+            	servo.save()
+
+            messages.success(request, 'Servo alterado com sucesso.')
+            return EquipesList(request)	
+    else:
+        form = ServoForm(instance=servo)
+
+    return render(request, 'ejc/servo_edit.html', {'form': form, 'title': 'Alterar Servo'})
+
+@login_required
+@permission_required('ejc.secretaria')
+def EquipesNew(request, pk):
+	if request.method == "POST":
+		form = ServoForm(request.POST)
+		if form.is_valid():
+			id_user = request.user.id
+			coord = Coordenador.objects.filter(usuario=id_user)
+			servo = form.save(commit=False)
+			servo.equipe = Equipe.objects.filter(id=pk)[0]
+			servo.save()
+			messages.success(request, 'Servo salvo com sucesso.')
+			return EquipesList(request)
+	else:
+		form = ServoForm()
+	
+	return render(request, 'ejc/servo_edit.html', {'form': form, 'title': 'Adicionar Servo'})

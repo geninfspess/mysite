@@ -6,5 +6,6 @@ urlpatterns = [
 	url(r'^admin/', admin.site.urls),
     url(r'^ejc/', include('ejc.urls')),
     url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/ejc/inscricao'}),
+    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/ejc/equipe/'}),
+    url('^change-password/$', views.password_change, {'post_change_redirect': '/ejc/equipe/'}, name='password_change'),
 ]

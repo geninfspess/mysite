@@ -1,0 +1,96 @@
+{% extends 'ejc/base.html' %}
+
+{% block content %}
+
+	<h3 class="w3-center" style="padding-bottom:18px;">
+		Equipe 
+		<form name="formListEquipe" method="post" action="/ejc/secretaria/" style="display:inline;">{% csrf_token %}
+			<select id="selEquipe" name="selEquipe" onChange="$('#btSubmit').click();">
+				<option value="0"></option>
+				{% for obj in equipe_list %}
+					<option value="{{ obj.id }}">{{ obj.nome }}</option>
+				{% endfor %}
+			</select>
+			<script type="text/javascript">$('#selEquipe').val({{ equipe }})</script>
+			<button type="submit" style="display:none;" id="btSubmit"></button>
+		</form>
+	</h3>
+
+	{% if coord_list %}	
+		<h4>Coordenadores</h4>
+		<table class="w3-table-all w3-hoverable w3-small">
+			<thead>
+		      <tr class="w3-light-grey">
+		        <th>Nome</th>
+		        <th>Nascimento</th>
+		        <th>E-mail</th>
+		        <th>Telefone</th>
+		        <th>Celular</th>
+		        <th>Comunidade</th>
+		        <th></th>
+		      </tr>
+		    </thead>
+			{% for obj in coord_list %}
+				<tr>
+					<td>{{ obj.nome }}</td>
+					<td>{{ obj.data_nascimento }}</td>
+					<td>
+						{{ obj.email }}
+						{% if obj.email2 != null %}<br>{{ obj.email2 }}{% endif %}
+					</td>
+					<td>{{ obj.telefone }}</td>
+					<td>
+						{{ obj.celular }}
+						{% if obj.celular2 != null %}<br>{{ obj.celular2 }}{% endif %}
+					</td>
+					<td>{{ obj.comunidade }}</td>
+					<td><a href="/ejc/secretaria/{{ obj.pk }}"><i class="fa fa-pencil"></i></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Nenhum coordenador cadastrado para a equipe.</p>
+	{% endif %}
+
+	<div style="padding:10px;"></div>
+
+	{% if servo_list %}	
+		<h4>Membros</h4>
+		<table class="w3-table-all w3-hoverable w3-small">
+			<thead>
+		      <tr class="w3-light-grey">
+		        <th>Nome</th>
+		        <th>Nascimento</th>
+		        <th>E-mail</th>
+		        <th>Telefone</th>
+		        <th>Celular</th>
+		        <th>Comunidade</th>
+		        <th></th>
+		      </tr>
+		    </thead>
+			{% for obj in servo_list %}
+				<tr>
+					<td>{{ obj.nome }}</td>
+					<td>{{ obj.data_nascimento }}</td>
+					<td>
+						{{ obj.email }}
+						{% if obj.email2 != null %}<br>{{ obj.email2 }}{% endif %}
+					</td>
+					<td>{{ obj.telefone }}</td>
+					<td>
+						{{ obj.celular }}
+						{% if obj.celular2 != null %}<br>{{ obj.celular2 }}{% endif %}
+					</td>
+					<td>{{ obj.comunidade }}</td>
+					<td><a href="/ejc/secretaria/{{ obj.pk }}"><i class="fa fa-pencil"></i></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Nenhum membro cadastrado para a equipe.</p>
+	{% endif %}
+	
+	<div align="center" style="margin-top:32px;">
+        <a type="button" href="/ejc/secretaria/new/{{ equipe }}/" class="w3-button w3-black w3-padding-large">Adicionar Servo</a>
+	</div>
+{% endblock content %}
